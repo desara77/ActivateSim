@@ -63,6 +63,10 @@ public class SimServiceImpl implements SimService {
 				return false;
 			}
 		}
+		else {
+			statusWithMsg.addErrorMesge("simID is not present in DB", methodname);
+			return false;
+		}
 		
 	
 
