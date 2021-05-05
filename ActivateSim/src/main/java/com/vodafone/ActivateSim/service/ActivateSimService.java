@@ -1,11 +1,11 @@
 package com.vodafone.ActivateSim.service;
 
-import com.vodafone.ActivateSim.model.ActivateSimResp;
 import com.vodafone.ActivateSim.model.Sim;
+import com.vodafone.ActivateSim.model.StatusResponseWithMessage;
 
 public interface ActivateSimService {
 	
 	
-	public ActivateSimResp updateSim(Sim sim, String simId);
+	public StatusResponseWithMessage activateSim(Sim sim) throws Exception;
 
 }

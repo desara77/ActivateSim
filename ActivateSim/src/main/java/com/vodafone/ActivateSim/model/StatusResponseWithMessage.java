@@ -32,9 +32,8 @@ public class StatusResponseWithMessage {
 	public void addErrorMesge(String msdcode, String methodname) {
 		
 		this.setResultCode(9999);
-		this.setResultDescription(methodname + "terminated with Error");
+		this.setResultDescription(methodname + " terminated with Error");
 		MessageWithParams msg = new MessageWithParams();
-		//msg.setMessageCode(msdcode);
 		msg.setMessageDescription(msdcode);
 		this.setMessagewithparams(msg);
 		

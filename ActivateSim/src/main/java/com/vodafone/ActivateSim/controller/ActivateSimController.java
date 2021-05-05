@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,34 +32,19 @@ public class ActivateSimController {
 	@Autowired
 	ActivateSimService activateSimService;
 	
-	@Autowired
-	SimService simService;
+		
+	StatusResponseWithMessage srwm = new StatusResponseWithMessage();
 	
-	ActivateSimResp resp = new ActivateSimResp();
-	
-	 @PutMapping(value="prepareSim/update/sim/{id}", headers="Accept=application/json") 
-	  public ActivateSimResp updateSim(@RequestBody Sim sim,@PathVariable("id") String simId) {
-	  
-		  log.info("Current SimId is : {} ",sim.getSimId());
-		  resp = activateSimService.updateSim(sim, simId);
-		  return resp;
+		
+	  @PostMapping(value="activateSimImpl")
+	  public StatusResponseWithMessage activateSim(@RequestBody Sim sim) throws Exception{
+		
+		log.info("inside activateSim......");
+   		srwm = activateSimService.activateSim(sim);
+		 return srwm;
 	  }
-	 
-	  
-//		/prevalid/prevalidSIM
-		//@RequestMapping(value="/prevalidSim", method=RequestMethod.GET)
-		 @GetMapping(path="/prevalidSim")
-		public StatusResponseWithMessage prevalidate4SIM(@PathParam(value="sim_id") String sim_id)  {
-			
-			try { 
-			 simService.simPrevalidation(sim_id);
-			
-			}
-			catch(RuntimeException re) {
-				System.out.println("runtime exception..");
-			}
-			return new StatusResponseWithMessage();
-		}
+	
+		 
 	  
 	
 }
