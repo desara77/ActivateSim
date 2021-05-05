@@ -43,9 +43,9 @@ public class ActivateSimServiceImpl implements ActivateSimService{
 	  public boolean prevalidActivateSim(Sim sim, StatusResponseWithMessage statusWithMsg) throws Exception {
 		
 		
-		  simService.simPrevalidation(sim.getSimId());
+		 boolean ret =  simService.simPrevalidation(sim.getSimId());
 		
-		  return true;
+		  return ret;
 	  }
 	  
 	
